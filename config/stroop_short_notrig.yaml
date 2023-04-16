@@ -9,8 +9,8 @@ Screen_color: "black"
 Text_size: 0.04
 Text_font: "Arial"
 Text_color: "white"
-Fixation_size: 0.04
-Target_size: 0.04
+Fixation_size: 0.087
+Target_size: 0.087
 
 # * times
 Target_show_time: [0.200, 0.200, 0.100]
