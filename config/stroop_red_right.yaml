@@ -1,0 +1,130 @@
+Procedure: "Flanker task"
+
+# * EEG
+Send_EEG_trigg: False
+Actiview_reminder: True
+
+# * view parameters
+Screen_color: "black"
+Text_size: 0.04
+Text_font: "Arial"
+Text_color: "white"
+Fixation_size: 0.04
+Target_size: 0.04
+
+# * times
+Target_show_time: [0.200, 0.200, 0.100]
+Blank_screen_for_response_show_time: [2.000, 2.400, 0.100]
+
+# * experiment parameters
+Response_key: {
+    "red": "r",
+    "green": "l",
+}
+
+# * experiment structure
+Experiment_blocks: [
+    {type: break, file_name: trening1.txt},
+    {type: training, number_of_trials: 24},
+    {type: break, file_name: trening2.txt},
+    {type: training, number_of_trials: 24},
+
+    {type: break, file_name: end_training.txt},
+    {type: rest, duration: 30, info_duration: 4, file_name: rest_info.txt},
+
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 1, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 2, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 3, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 4, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 5, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 6, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 7, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 8, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 9, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 10, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 11, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 12, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 13, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 14, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 15, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 16, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 17, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 18, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 19, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 20, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 21, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 22, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 23, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 24, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 25, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 26, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 27, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 28, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 29, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 30, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 31, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 32, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 33, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 34, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 35, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 36, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 37, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 38, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 39, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 40, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 41, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 42, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 43, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 44, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 45, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 46, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, num: 47, file_name: break_template.txt},
+    {type: experiment, number_of_trials: 48},
+    {type: break, file_name: end.txt}]

@@ -1,0 +1,34 @@
+Procedure: "Flanker task"
+
+# * EEG
+Send_EEG_trigg: False
+Actiview_reminder: True
+
+# * view parameters
+Screen_color: "black"
+Text_size: 0.04
+Text_font: "Arial"
+Text_color: "white"
+Fixation_size: 0.04
+Target_size: 0.04
+
+# * times
+Target_show_time: [0.200, 0.200, 0.100]
+Blank_screen_for_response_show_time: [2.000, 2.400, 0.100]
+
+# * experiment parameters
+Response_key: {
+    "red": "l",
+    "green": "r",
+}
+
+# * experiment structure
+Experiment_blocks: [
+    {type: break, file_name: trening1.txt},
+    {type: training, number_of_trials: 6},
+    {type: break, file_name: end_training.txt},
+    {type: rest, duration: 5, info_duration: 4, file_name: rest_info.txt},
+
+    {type: experiment, number_of_trials: 6},
+
+    {type: break, file_name: end.txt}]

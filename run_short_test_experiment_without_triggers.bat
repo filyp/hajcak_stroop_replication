@@ -1,1 +1,1 @@
-C:\"Program Files"\PsychoPy\python.exe main.py config\flankers_hajcak2005_with_cues_short_notrig.yaml
+C:\"Program Files"\PsychoPy\python.exe main.py config\stroop_short_notrig.yaml

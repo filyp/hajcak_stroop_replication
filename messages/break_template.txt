@@ -1,2 +1,2 @@
-Przerwa nr 9.
+Przerwa nr <--insert-->.
 Naciśnij spację, aby przejść do kolejnego bloku zadania.
