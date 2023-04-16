@@ -1,0 +1,7 @@
+*.pyc
+.idea
+.vscode
+venv
+results
+michal_test.zip
+michal_test
