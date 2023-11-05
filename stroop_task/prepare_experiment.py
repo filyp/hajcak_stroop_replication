@@ -47,6 +47,27 @@ def prepare_stimuli(win, config):
         height=config["Target_size"],
         name="green_niebieski",
     )
+    # stimuli["blue_niebieski"] = visual.TextStim(
+    #     win=win,
+    #     text="niebieski",
+    #     color="blue",
+    #     height=config["Target_size"],
+    #     name="blue_niebieski",
+    # )
+    # stimuli["blue_czerwony"] = visual.TextStim(
+    #     win=win,
+    #     text="czerwony",
+    #     color="blue",
+    #     height=config["Target_size"],
+    #     name="blue_czerwony",
+    # )
+    # stimuli["blue_zielony"] = visual.TextStim(
+    #     win=win,
+    #     text="zielony",
+    #     color="blue",
+    #     height=config["Target_size"],
+    #     name="blue_zielony",
+    # )
     return stimuli
 
 
@@ -120,3 +141,42 @@ def prepare_trials(block, stimuli, config):
 
     random.shuffle(all_trials)
     return all_trials
+
+
+# def prepare_trials_inzlicht(block, stimuli, config):
+#     all_trials = []
+
+#     # we want 24 congruent trials + 12 incongruent trials
+    
+#     # congruent
+#     for _ in range(8):
+#         all_trials.append(
+#             dict(
+#                 target=stimuli["red_czerwony"],
+#                 target_name="red_czerwony",
+#                 type="congruent",
+#                 font_color="red",
+#                 text="czerwony",
+#                 correct_side=config["Response_key"]["red"],
+#             )
+#         )
+#         all_trials.append(
+#             dict(
+#                 target=stimuli["green_zielony"],
+#                 target_name="green_zielony",
+#                 type="congruent",
+#                 font_color="green",
+#                 text="zielony",
+#                 correct_side=config["Response_key"]["green"],
+#             )
+#         )
+#         all_trials.append(
+#             dict(
+#                 target=stimuli["blue_niebieski"],
+#                 target_name="blue_niebieski",
+#                 type="congruent",
+#                 font_color="blue",
+#                 text="niebieski",
+#                 correct_side=config["Response_key"]["blue"],   
+#             )
+#         )

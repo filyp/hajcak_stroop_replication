@@ -16,16 +16,17 @@ def random_time(min_time, max_time, step=0.100):
     possible_times = np.linspace(min_time, max_time, steps)
     return random.choice(possible_times)
 
+
 def check_response(exp, block, trial, response_data):
     _, press_times = exp.mouse.getPressed(getTime=True)
 
     second_key = None
-    if press_times[0] == 0.0 and press_times[2] == 0.0:
+    if press_times[0] == 0 and press_times[2] == 0:
         return
-    elif press_times[0] != 0.0 and press_times[2] == 0.0:
+    elif press_times[0] != 0 and press_times[2] == 0:
         key = "l"
         reaction_time = press_times[0]
-    elif press_times[0] == 0.0 and press_times[2] != 0.0:
+    elif press_times[0] == 0 and press_times[2] != 0:
         key = "r"
         reaction_time = press_times[2]
     else:
@@ -51,13 +52,14 @@ def check_response(exp, block, trial, response_data):
     response_data.append((key, reaction_time))
 
     if second_key is not None:
-        trigger_name = get_trigger_name(TriggerTypes.SECOND_REACTION, block, trial, second_key)
+        trigger_name = get_trigger_name(
+            TriggerTypes.SECOND_REACTION, block, trial, second_key
+        )
         exp.trigger_handler.prepare_trigger(trigger_name)
         exp.trigger_handler.send_trigger()
         response_data.append((second_key, None))
 
     exp.mouse.clickReset()
-
 
 
 def stroop_task(exp, config, data_saver):
@@ -99,13 +101,15 @@ def stroop_task(exp, config, data_saver):
         elif block["type"] in ["experiment", "training"]:
             block["trials"] = prepare_trials(block, stimuli, config)
         else:
-            raise Exception(
+            raise ValueError(
                 "{} is bad block type in config Experiment_blocks".format(block["type"])
             )
 
         # ! draw empty screen
         trigger_name = get_trigger_name(TriggerTypes.FIXATION, block, response="-")
-        empty_screen_show_time = random_time(*config["Blank_screen_for_response_show_time"])
+        empty_screen_show_time = random_time(
+            *config["Blank_screen_for_response_show_time"]
+        )
         exp.display_for_duration(empty_screen_show_time, fixation, trigger_name)
 
         for trial in block["trials"]:
@@ -130,7 +134,9 @@ def stroop_task(exp, config, data_saver):
 
             # ! draw empty screen and await response
             trigger_name = get_trigger_name(TriggerTypes.FIXATION, block, trial)
-            empty_screen_show_time = random_time(*config["Blank_screen_for_response_show_time"])
+            empty_screen_show_time = random_time(
+                *config["Blank_screen_for_response_show_time"]
+            )
             trigger_handler.prepare_trigger(trigger_name)
             fixation.setAutoDraw(True)
             win.flip()
@@ -142,7 +148,9 @@ def stroop_task(exp, config, data_saver):
             data_saver.check_exit()
 
             # check if reaction was correct
-            response_side, reaction_time = response_data[0] if response_data != [] else ("-", "-")
+            response_side, reaction_time = (
+                response_data[0] if response_data != [] else ("-", "-")
+            )
             if response_side == trial["correct_side"]:
                 reaction = "correct"
             else:
