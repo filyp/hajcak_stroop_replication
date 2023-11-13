@@ -173,5 +173,5 @@ def stroop_task(exp, config, data_saver):
             data_saver.beh.append(behavioral_data)
             trigger_handler.close_trial(response_side)
 
-            logging.data(f"Behavioral data: {behavioral_data}\n")
-            logging.flush()
+            # logging.data(f"Behavioral data: {behavioral_data}\n")
+            # logging.flush()
