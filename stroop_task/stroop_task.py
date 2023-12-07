@@ -168,7 +168,7 @@ def stroop_task(exp, config, data_saver):
 
             # if incorrect and training, show feedback
             if reaction == "incorrect" and block["type"] == "training":
-                text = "Reakcja niepoprawna.\n" + config["Response_instruction"]
+                text = "Reakcja niepoprawna.\n\n" + config["Response_instruction"]
                 show_info(None, exp, duration=6, custom_text=text)
                 exp.display_for_duration(2, fixation)
 
