@@ -1,3 +1,8 @@
+#trigger key
+# 1 - closed
+# 2 - open
+# 3 - end
+
 import json
 import os
 import random
@@ -16,9 +21,10 @@ from psychopy_experiment_helpers.experiment_info import (
 )
 from psychopy_experiment_helpers.save_data import DataSaver
 from psychopy_experiment_helpers.screen import create_win
+from psychopy_experiment_helpers.triggers_common import TriggerHandler, create_eeg_port
 
 display_eeg_info()
-participant_info, experiment_version = get_participant_info(False)
+# participant_info, experiment_version = get_participant_info(False)
 
 blocks = ["open", "open", "open", "open", "closed", "closed", "closed", "closed"]
 random.shuffle(blocks)
@@ -29,13 +35,16 @@ for i in range(len(blocks) - 1):
         blocks[i + 1] = "keep_" + b2
 print(blocks)
 
-# save blocks
-dir_name = os.path.join("results", "rest")
-if not os.path.exists(dir_name):
-    os.makedirs(dir_name)
-filename = os.path.join("results", "rest", participant_info + ".json")
-with open(filename, "w") as f:
-    json.dump(blocks, f, indent=4)
+# # save blocks
+# dir_name = os.path.join("results", "rest")
+# if not os.path.exists(dir_name):
+#     os.makedirs(dir_name)
+# filename = os.path.join("results", "rest", participant_info + ".json")
+# with open(filename, "w") as f:
+#     json.dump(blocks, f, indent=4)
+
+
+port_eeg = create_eeg_port()
 
 
 win, screen_res = create_win(
@@ -58,11 +67,33 @@ win.flip()
 block_time = 60
 start_time = time.time()
 for i, block in enumerate(blocks):
+    if block.split("_")[-1] == "open":
+        trigger_no = 2
+    elif block.split("_")[-1] == "closed":
+        trigger_no = 1
+    else:
+        raise ValueError(f"Unknown block type: {block}")
+
+    # send trigger
+    port_eeg.setData(trigger_no)
+    time.sleep(0.005)
+    port_eeg.setData(0x00)
+    time.sleep(0.005)
+
     sound_file = os.path.join("messages", f"{block}.wav")
     playsound.playsound(sound_file, block=True)
 
     block_end = start_time + block_time * (i + 1)
     time.sleep(block_end - time.time())
+
+
+# send trigger
+# 3 means the end
+port_eeg.setData(3)
+time.sleep(0.005)
+port_eeg.setData(0x00)
+time.sleep(0.005)
+
 
 msg = visual.TextStim(
     text="Koniec.\nZaczekaj na eksperymentatora.\n\n(Naciśnij spację, aby wyjść.)",
