@@ -74,7 +74,9 @@ def prepare_stimuli(win, config):
 def prepare_trials(block, stimuli, config):
     all_trials = []
 
-    number_of_trials = block.get("number_of_trials", 0)  # if not given, assume it's a break block
+    number_of_trials = block.get(
+        "number_of_trials", 0
+    )  # if not given, assume it's a break block
     assert number_of_trials % 6 == 0  # it must be multiple of 6
 
     for _ in range(int(number_of_trials // 6)):
@@ -124,7 +126,7 @@ def prepare_trials(block, stimuli, config):
                 target_name="red_niebieski",
                 type="neutral",
                 font_color="red",
-                text="niebieski",  
+                text="niebieski",
                 correct_side=config["Response_key"]["red"],
             )
         )
@@ -147,7 +149,7 @@ def prepare_trials(block, stimuli, config):
 #     all_trials = []
 
 #     # we want 24 congruent trials + 12 incongruent trials
-    
+
 #     # congruent
 #     for _ in range(8):
 #         all_trials.append(
@@ -177,6 +179,6 @@ def prepare_trials(block, stimuli, config):
 #                 type="congruent",
 #                 font_color="blue",
 #                 text="niebieski",
-#                 correct_side=config["Response_key"]["blue"],   
+#                 correct_side=config["Response_key"]["blue"],
 #             )
 #         )

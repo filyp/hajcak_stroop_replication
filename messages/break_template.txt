@@ -1,2 +1,6 @@
-Przerwa nr <--insert-->.
-Naciśnij spację, aby przejść do kolejnego bloku zadania.
+Zakończyłeś jeden z bloków sesji eksperymentalnej. 
+Przerwa na odpoczynek nr <--insert-->
+
+Za chwilę rozpocznie się kolejny blok sesji eksperymentalnej.
+
+Naciśnij spację, kiedy będziesz gotowy kontynuować badanie.

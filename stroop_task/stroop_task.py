@@ -91,7 +91,17 @@ def stroop_task(exp, config, data_saver):
         logging.flush()
 
         if block["type"] == "break":
-            show_info(block["file_name"], exp, insert=str(block.get("num", "")))
+            if "trening" in block["file_name"] or "explain" in block["file_name"]:
+                to_insert = config["Response_instruction"]
+            else:
+                to_insert = str(block.get("num", "")) + "."
+                if block.get("num", -1) % 4 == 0:
+                    # remind the response key every 4 blocks
+                    to_insert += (
+                        "\nDla przypomnienia:\n\n" + config["Response_instruction"]
+                    )
+
+            show_info(block["file_name"], exp, insert=to_insert)
             continue
         elif block["type"] == "rest":
             show_info(block["file_name"], exp, duration=block["info_duration"])
@@ -155,6 +165,12 @@ def stroop_task(exp, config, data_saver):
                 reaction = "correct"
             else:
                 reaction = "incorrect"
+
+            # if incorrect and training, show feedback
+            if reaction == "incorrect" and block["type"] == "training":
+                text = "Reakcja niepoprawna.\n" + config["Response_instruction"]
+                show_info(None, exp, duration=6, custom_text=text)
+                exp.display_for_duration(2, fixation)
 
             # save beh
             # fmt: off
