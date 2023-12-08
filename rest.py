@@ -52,6 +52,18 @@ win, screen_res = create_win(
     screen_number=-1,
 )
 
+
+start_msg = visual.TextStim(
+    text="Naciśnij spację aby rozpocząć.",
+    win=win,
+    antialias=True,
+    font="Arial",
+    height=0.087,
+    # wrapWidth=screen_width,
+    color="white",
+    alignText="center",
+    pos=(0, 0),
+)
 fixation = visual.TextStim(
     win=win,
     text="+",
@@ -59,6 +71,12 @@ fixation = visual.TextStim(
     height=0.087,
     name="fixation",
 )
+start_msg.draw()
+win.flip()
+
+event.waitKeys(keyList=["f7", "return", "space"])
+
+
 
 fixation.draw()
 win.flip()
