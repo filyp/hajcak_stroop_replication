@@ -23,11 +23,25 @@ from psychopy_experiment_helpers.save_data import DataSaver
 from psychopy_experiment_helpers.screen import create_win
 from psychopy_experiment_helpers.triggers_common import TriggerHandler, create_eeg_port
 
+starting_instructions = """\
+Teraz nagramy 8 minut danych w spoczynku. W tym czasie będziesz siedział/a wygodnie w fotelu, z zamkniętymi lub otwartymi oczami. W trakcie nagrywania usłyszysz komendy głosowe, które będą Ci mówić, kiedy masz otworzyć lub zamknąć oczy. 
+
+Naciśnij spację aby rozpocząć.
+"""
+
+# We will record 8 minutes of resting state data, of which 4 minutes are recorded while eyes are closed and 4 minutes while eyes are opened. Conditions will vary in 1 minute blocks.
+# The voice commands are given to the participants to open and close their eyes, or keep their eyes open/closed. The presentation software should display instructions in the language of your choice (if available, see below), deliver the voice commands, and send EEG triggers.
+
 display_eeg_info()
 # participant_info, experiment_version = get_participant_info(False)
 
-blocks = ["open", "open", "open", "open", "closed", "closed", "closed", "closed"]
-random.shuffle(blocks)
+# blocks = ["open", "open", "open", "open", "closed", "closed", "closed", "closed"]
+# random.shuffle(blocks)
+blocks1 = ["open", "closed", "closed", "open", "closed", "open", "open", "closed"]
+blocks2 = ["closed", "open", "open", "closed", "open", "closed", "closed", "open"]
+# choose one of them randomly
+blocks = random.choice([blocks1, blocks2])
+
 for i in range(len(blocks) - 1):
     b1 = blocks[i]
     b2 = blocks[i + 1]
@@ -54,7 +68,7 @@ win, screen_res = create_win(
 
 
 start_msg = visual.TextStim(
-    text="Naciśnij spację aby rozpocząć.",
+    text=starting_instructions,
     win=win,
     antialias=True,
     font="Arial",
@@ -75,7 +89,6 @@ start_msg.draw()
 win.flip()
 
 event.waitKeys(keyList=["f7", "return", "space"])
-
 
 
 fixation.draw()
