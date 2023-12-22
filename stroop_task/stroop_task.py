@@ -76,6 +76,7 @@ def stroop_task(exp, config, data_saver):
         color="white",
         height=config["Fixation_size"],
         name="fixation",
+        pos=(0, config["Fixation_offset"]),
     )
 
     # EEG triggers

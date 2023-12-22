@@ -7,63 +7,63 @@ def prepare_stimuli(win, config):
     stimuli = dict()
     stimuli["red_czerwony"] = visual.TextStim(
         win=win,
-        text="czerwony",
+        text="CZERWONY",
         color="red",
         height=config["Target_size"],
         name="red_czerwony",
     )
     stimuli["green_zielony"] = visual.TextStim(
         win=win,
-        text="zielony",
+        text="ZIELONY",
         color="green",
         height=config["Target_size"],
         name="green_zielony",
     )
     stimuli["red_zielony"] = visual.TextStim(
         win=win,
-        text="zielony",
+        text="ZIELONY",
         color="red",
         height=config["Target_size"],
         name="red_zielony",
     )
     stimuli["green_czerwony"] = visual.TextStim(
         win=win,
-        text="czerwony",
+        text="CZERWONY",
         color="green",
         height=config["Target_size"],
         name="green_czerwony",
     )
     stimuli["red_niebieski"] = visual.TextStim(
         win=win,
-        text="niebieski",
+        text="NIEBIESKI",
         color="red",
         height=config["Target_size"],
         name="red_niebieski",
     )
     stimuli["green_niebieski"] = visual.TextStim(
         win=win,
-        text="niebieski",
+        text="NIEBIESKI",
         color="green",
         height=config["Target_size"],
         name="green_niebieski",
     )
     # stimuli["blue_niebieski"] = visual.TextStim(
     #     win=win,
-    #     text="niebieski",
+    #     text="NIEBIESKI",
     #     color="blue",
     #     height=config["Target_size"],
     #     name="blue_niebieski",
     # )
     # stimuli["blue_czerwony"] = visual.TextStim(
     #     win=win,
-    #     text="czerwony",
+    #     text="CZERWONY",
     #     color="blue",
     #     height=config["Target_size"],
     #     name="blue_czerwony",
     # )
     # stimuli["blue_zielony"] = visual.TextStim(
     #     win=win,
-    #     text="zielony",
+    #     text="ZIELONY",
     #     color="blue",
     #     height=config["Target_size"],
     #     name="blue_zielony",
