@@ -9,14 +9,14 @@ Screen_color: "black"
 Text_size: 0.04
 Text_font: "Arial"
 Text_color: "white"
-Fixation_size: 0.087
-# 3/360*2*3.14*50/30 / 6.4   (6.4 is the proportion of text width to height)
-Target_size: 0.0136
+Fixation_size: 0.0435
+# 3/360*2*3.14*50/30 / 7.07   (7.07 is the proportion of text width to height)
+Target_size: 0.0123
 # needs to be calibrated when Target_size or Fixation_size is changed
-Fixation_offset: 0.008
+Fixation_offset: 0.003
 
 # * times
-Target_show_time: [4.200, 4.200, 0.100]
+Target_show_time: [0.200, 0.200, 0.100]
 Blank_screen_for_response_show_time: [2.000, 2.400, 0.100]
 
 # * experiment parameters
