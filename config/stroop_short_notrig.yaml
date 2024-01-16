@@ -35,7 +35,6 @@ Response_instruction: |
 
 # * experiment structure
 Experiment_blocks: [
-    # {type: break, num: 4, file_name: break_template.txt},
     {type: break, file_name: greet.txt},
     {type: break, file_name: explain1.txt},
     {type: break, file_name: explain2.txt},
@@ -46,7 +45,7 @@ Experiment_blocks: [
     {type: rest, duration: 5, info_duration: 4, file_name: rest_info.txt},
 
     {type: experiment, number_of_trials: 6},
-    {type: break, num: 1, file_name: break_template.txt},
+    {type: break, num: 1, file_name: set_elsewhere},
     {type: experiment, number_of_trials: 6},
 
     {type: break, file_name: end.txt}]

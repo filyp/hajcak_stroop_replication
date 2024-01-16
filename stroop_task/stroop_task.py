@@ -1,14 +1,16 @@
+import pathlib
 import random
-import numpy as np
 from collections import OrderedDict
 
+import numpy as np
 from psychopy import core, event, logging, visual
 
 from psychopy_experiment_helpers.show_info import show_info
-
-from stroop_task.triggers import TriggerTypes, get_trigger_name
 from psychopy_experiment_helpers.triggers_common import TriggerHandler, create_eeg_port
-from stroop_task.prepare_experiment import prepare_trials, prepare_stimuli
+from stroop_task.prepare_experiment import prepare_stimuli, prepare_trials
+from stroop_task.triggers import TriggerTypes, get_trigger_name
+
+message_dir = pathlib.Path(__file__).parent.parent / "messages"
 
 
 def random_time(min_time, max_time, step=0.100):
@@ -94,15 +96,26 @@ def stroop_task(exp, config, data_saver):
         if block["type"] == "break":
             if "trening" in block["file_name"] or "explain" in block["file_name"]:
                 to_insert = config["Response_instruction"]
-            else:
-                to_insert = str(block.get("num", "")) + "."
-                if block.get("num", -1) % 4 == 0:
-                    # remind the response key every 4 blocks
-                    to_insert += (
-                        "\nDla przypomnienia:\n\n" + config["Response_instruction"]
-                    )
+                show_info(block["file_name"], exp, insert=to_insert)
+            elif "num" in block and block["num"] % 4 != 0:
+                # normal break
+                template = (message_dir / "normal_break.txt").read_text()
+                text = template.format(num=block["num"])
+                show_info(None, exp, duration=None, custom_text=text)
+            elif "num" in block and block["num"] % 4 == 0:
+                template = (message_dir / "fourth_break1.txt").read_text()
+                text = template.format(
+                    num=block["num"],
+                    response_instruction=config["Response_instruction"],
+                )
+                show_info(None, exp, duration=60, custom_text=text)
 
-            show_info(block["file_name"], exp, insert=to_insert)
+                template = (message_dir / "fourth_break2.txt").read_text()
+                text = template
+                show_info(None, exp, duration=None, custom_text=text)
+
+            else:
+                show_info(block["file_name"], exp)
             continue
         elif block["type"] == "rest":
             show_info(block["file_name"], exp, duration=block["info_duration"])

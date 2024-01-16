@@ -1,5 +1,5 @@
 Zakończyłeś jeden z bloków sesji eksperymentalnej. 
-Przerwa na odpoczynek nr <--insert-->
+Przerwa na odpoczynek nr {num}.
 
 Za chwilę rozpocznie się kolejny blok sesji eksperymentalnej.
 
