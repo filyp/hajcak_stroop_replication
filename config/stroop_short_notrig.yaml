@@ -10,12 +10,10 @@ Text_size: 0.04
 Text_font: "Arial"
 Text_color: "white"
 Fixation_size: 0.0435
-# # 3/360*2*3.14*50/30 / 6.4   (6.4 is the proportion of text width to height)
-# Target_size: 0.0136
-# this is enlarged by 1.41 to keep the same surface (polish words are 2x longer)
-Target_size: 0.0192
+# # 6/360*2*3.14*50/30 / 6.4   (6.4 is the proportion of text width to height)
+Target_size: 0.0272
 # needs to be calibrated when Target_size or Fixation_size is changed
-Fixation_offset: 0.003
+Fixation_offset: 0.001
 
 # * times
 Target_show_time: [0.200, 0.200, 0.100]
