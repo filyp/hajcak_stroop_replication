@@ -81,7 +81,7 @@ start_msg = visual.TextStim(
 fixation = visual.TextStim(
     win=win,
     text="+",
-    color="white",
+    color="grey",
     height=0.087,
     name="fixation",
 )

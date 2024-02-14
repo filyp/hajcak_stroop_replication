@@ -75,7 +75,7 @@ def stroop_task(exp, config, data_saver):
     fixation = visual.TextStim(
         win=win,
         text="+",
-        color="white",
+        color="grey",
         height=config["Fixation_size"],
         name="fixation",
         pos=(0, config["Fixation_offset"]),
