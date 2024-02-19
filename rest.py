@@ -72,7 +72,7 @@ start_msg = visual.TextStim(
     win=win,
     antialias=True,
     font="Arial",
-    height=0.047,
+    height=0.04,
     # wrapWidth=screen_width,
     color="white",
     alignText="center",
@@ -82,7 +82,7 @@ fixation = visual.TextStim(
     win=win,
     text="+",
     color="grey",
-    height=0.087,
+    height=0.0435,
     name="fixation",
 )
 start_msg.draw()
@@ -137,7 +137,7 @@ msg = visual.TextStim(
     win=win,
     antialias=True,
     font="Arial",
-    height=0.087,
+    height=0.04,
     # wrapWidth=screen_width,
     color="white",
     alignText="center",
