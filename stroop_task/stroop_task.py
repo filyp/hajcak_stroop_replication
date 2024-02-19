@@ -94,29 +94,30 @@ def stroop_task(exp, config, data_saver):
         logging.flush()
 
         if block["type"] == "break":
-            if "trening" in block["file_name"] or "explain" in block["file_name"]:
-                to_insert = config["Response_instruction"]
-                show_info(block["file_name"], exp, insert=to_insert)
-            elif "num" in block and block["num"] % 4 != 0:
+            if "num" in block and block["num"] % 4 != 0:
                 # normal break
-                template = (message_dir / "normal_break.txt").read_text()
-                text = template.format(num=block["num"])
+                text = (message_dir / "normal_break.txt").read_text()
+                text = text.format(num=block["num"], **config)
                 show_info(None, exp, duration=None, custom_text=text)
+
             elif "num" in block and block["num"] % 4 == 0:
-                template = (message_dir / "fourth_break1.txt").read_text()
-                text = template.format(
-                    num=block["num"],
-                    response_instruction=config["Response_instruction"],
-                )
+                # every fourth break
+                text = (message_dir / "fourth_break1.txt").read_text()
+                text = text.format(num=block["num"], **config)
                 show_info(None, exp, duration=60, custom_text=text)
 
-                template = (message_dir / "fourth_break2.txt").read_text()
-                text = template
+                text = (message_dir / "fourth_break2.txt").read_text()
+                text = text.format(num=block["num"], **config)
                 show_info(None, exp, duration=None, custom_text=text)
 
             else:
-                show_info(block["file_name"], exp)
+                # all the other messages, instructions, info
+                text = (message_dir / block["file_name"]).read_text()
+                text = text.format(**config)
+                show_info(None, exp, duration=None, custom_text=text)
+
             continue
+
         elif block["type"] == "rest":
             show_info(block["file_name"], exp, duration=block["info_duration"])
             trigger_name = get_trigger_name(TriggerTypes.FIXATION, block, response="-")

@@ -37,7 +37,7 @@ Experiment_blocks: [
     {type: break, file_name: explain1.txt},
     {type: break, file_name: explain2.txt},
     {type: training, number_of_trials: 24},
-    {type: break, file_name: trening2.txt},
+    {type: break, file_name: training.txt},
     {type: training, number_of_trials: 24},
 
     {type: break, file_name: end_training.txt},

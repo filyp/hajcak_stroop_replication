@@ -4,4 +4,4 @@ Twoim zadaniem jest określić KOLOR CZCIONKI, którą napisany jest wyraz.
 
 Zignoruj znaczenie wyrazu.
 
-Naciśnij spację, aby kontynuować.
+Kliknij myszką, aby kontynuować.

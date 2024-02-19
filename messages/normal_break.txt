@@ -3,4 +3,4 @@ Przerwa na odpoczynek nr {num}.
 
 Za chwilę rozpocznie się kolejny blok sesji eksperymentalnej.
 
-Naciśnij spację, kiedy będziesz gotowy kontynuować badanie.
+Kliknij myszką, kiedy będziesz gotowy kontynuować badanie.

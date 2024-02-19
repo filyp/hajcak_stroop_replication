@@ -1,9 +1,10 @@
-<--insert-->
+{Response_instruction}
 
 Najpierw wykonasz kilka prób treningowych.
 
 Czy masz jakieś pytania?
 
 
-Naciśnij spację, aby rozpocząć próby treningowe.
+Kliknij myszką, aby rozpocząć próby treningowe.
+
 
