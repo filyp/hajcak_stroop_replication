@@ -1,5 +1,3 @@
-Procedure: "Flanker task"
-
 # * EEG
 Send_EEG_trigg: False
 Actiview_reminder: True
@@ -31,8 +29,6 @@ Response_instruction: |
     Jeśli KOLOR CZCIONKI jest ZIELONY:
     naciśnij PRAWY przycisk myszy
 
-
-
 # * experiment structure
 Experiment_blocks: [
     {type: break, file_name: greet.txt},
@@ -45,6 +41,15 @@ Experiment_blocks: [
 
     {type: experiment, number_of_trials: 6},
     {type: break, num: 1},
-
     {type: experiment, number_of_trials: 6},
-    {type: break, file_name: end.txt}]
+    {type: break, num: 2},
+    {type: experiment, number_of_trials: 6},
+    {type: break, num: 3},
+    {type: experiment, number_of_trials: 6},
+    {type: break, num: 4},
+    {type: experiment, number_of_trials: 6},
+    {type: break, num: 5},
+    {type: experiment, number_of_trials: 6},
+    {type: break, num: 6},
+    {type: experiment, number_of_trials: 6},
+    {type: break, file_name: end.txt, duration: 5}]

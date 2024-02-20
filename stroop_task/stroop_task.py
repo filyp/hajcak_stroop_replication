@@ -268,7 +268,7 @@ def stroop_task(exp, config, data_saver):
         if block["type"] == "break":
             if "num" in block:
                 text = "Zakończyłeś jeden z bloków sesji eksperymentalnej."
-                show_info(None, exp, duration=5, custom_text=text)
+                show_info(None, exp, duration=3, custom_text=text)
 
                 text = """\
                 Zrób sobie PRZERWĘ.
@@ -279,11 +279,7 @@ def stroop_task(exp, config, data_saver):
                 text = dedent(text).format(num=block["num"])
                 show_info(None, exp, duration=None, custom_text=text)
 
-                if block["num"] % 4 != 0:
-                    # normal block
-                    text = """Za chwilę rozpocznie się kolejny blok sesji eksperymentalnej."""
-                    show_info(None, exp, duration=5, custom_text=text)
-                else:
+                if block["num"] % 4 == 0:
                     # every fourth break
                     text = """\
                     Dla przypomnienia:
@@ -292,6 +288,9 @@ def stroop_task(exp, config, data_saver):
 
                     Za minutę rozpocznie się kolejny blok sesji eksperymentalnej."""
                     show_info(None, exp, duration=60, custom_text=text)
+
+                text = """Za chwilę rozpocznie się kolejny blok sesji eksperymentalnej."""
+                show_info(None, exp, duration=5, custom_text=text)
 
             else:
                 # all the other messages, instructions, info
