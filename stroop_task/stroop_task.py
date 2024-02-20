@@ -287,6 +287,7 @@ def stroop_task(exp, config, data_saver):
                     {Response_instruction}
 
                     Za minutę rozpocznie się kolejny blok sesji eksperymentalnej."""
+                    text = dedent(text).format(**config)
                     show_info(None, exp, duration=60, custom_text=text)
 
                 text = """Za chwilę rozpocznie się kolejny blok sesji eksperymentalnej."""
