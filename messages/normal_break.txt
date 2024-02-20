@@ -1,6 +1,0 @@
-Zakończyłeś jeden z bloków sesji eksperymentalnej. 
-Przerwa na odpoczynek nr {num}.
-
-Za chwilę rozpocznie się kolejny blok sesji eksperymentalnej.
-
-Kliknij myszką, kiedy będziesz gotowy kontynuować badanie.

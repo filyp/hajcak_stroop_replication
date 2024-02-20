@@ -1,7 +1,0 @@
-Za chwilę zobaczysz wyrazy, napisane czcionką w różnych kolorach.
-
-Twoim zadaniem jest określić KOLOR CZCIONKI, którą napisany jest wyraz.
-
-Zignoruj znaczenie wyrazu.
-
-Kliknij myszką, aby kontynuować.

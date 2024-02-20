@@ -1,6 +1,5 @@
 Teraz przejdziesz przez kolejny blok prób treningowych.
-Dla przypomnienia:
 
-{Response_instruction}
+Czy masz jakieś pytania?
 
-Kliknij myszką, kiedy będziesz gotowy kontynuować badanie.
+(kliknij myszką aby ROZPOCZĄĆ PRÓBY TRENINGOWE)

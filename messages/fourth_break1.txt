@@ -1,7 +1,0 @@
-Zakończyłeś jeden z bloków sesji eksperymentalnej. 
-Przerwa na odpoczynek nr {num}.
-Dla przypomnienia:
-
-{Response_instruction}
-
-Minuta przerwy.
