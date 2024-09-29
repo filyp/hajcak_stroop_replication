@@ -7,6 +7,7 @@ import json
 import os
 import random
 import time
+import sys
 
 import playsound
 from psychopy import clock, core, event, logging, prefs, sound, visual
@@ -39,8 +40,14 @@ display_eeg_info()
 # random.shuffle(blocks)
 blocks1 = ["open", "closed", "closed", "open", "closed", "open", "open", "closed"]
 blocks2 = ["closed", "open", "open", "closed", "open", "closed", "closed", "open"]
-# choose one of them randomly
-blocks = random.choice([blocks1, blocks2])
+
+version = sys.argv[1]
+if version == "open":
+    blocks = blocks1
+elif version == "closed":
+    blocks = blocks2
+else:
+    raise ValueError(f"Unknown version: {version} (should be 'open' or 'closed')")
 
 for i in range(len(blocks) - 1):
     b1 = blocks[i]
