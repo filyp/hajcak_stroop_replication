@@ -1,11 +1,27 @@
 # %% load data
 import re
-import pandas as pd
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 filename = "Cechy afektywne a kontrola poznawcza_ Podejście neurofizjologiczne (Responses).xlsx"
 df = pd.read_excel(filename)
+
+# %% find rows where "Email Address" is duplicated
+df = df[~df["Email Address"].duplicated(keep="last")]
+
+# assert that all "Email Address" are unique
+assert len(df["Email Address"].unique()) == len(df)
+
+# %% delete the duplicated person (K.C. @gmail)
+to_delete = Path("to_delete.txt").read_text().strip()
+df = df[df["Email Address"] != to_delete]
+
+# %% recreate the index
+df = df.reset_index(drop=True)
+df
 
 # %% slice into questionnaires
 first_pswq_column = 4
@@ -112,7 +128,9 @@ for questionnaire in ["PSWQ", "SPQ", "SNAQ", "SPQ+SNAQ"]:
     enumerated = list(enumerate(df[f"{questionnaire} total score"]))
     _sorted_by_score = sorted(enumerated, key=lambda x: x[1])
     people_sorted_by_score = [index for index, score in _sorted_by_score]
-    df[f"{questionnaire} rank"] = [people_sorted_by_score.index(pi) / n for pi in range(n)]
+    df[f"{questionnaire} rank"] = [
+        people_sorted_by_score.index(pi) / n for pi in range(n)
+    ]
 # %% analyses
 # np.corrcoef([df["PSWQ rank"], df["SPQ rank"], df["SNAQ rank"], df["SPQ+SNAQ rank"]])
 
