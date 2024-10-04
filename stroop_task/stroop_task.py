@@ -160,7 +160,8 @@ def _display_instructions(exp, stimuli):
         visual.TextStim(
             text="naciśnij PRAWY przycisk myszy",
             pos=(0, -0.15),
-        )
+            **args,
+        ).draw()
         _stim = copy(stimuli["red_czerwony"])
         _stim.pos = (0, 0.05)
         _stim.draw()
