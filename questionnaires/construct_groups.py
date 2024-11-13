@@ -27,10 +27,11 @@ df
 first_pswq_column = 4
 first_spq_column = first_pswq_column + 16
 first_snaq_column = first_spq_column + 31
+first_meta_column = first_snaq_column + 2
 
 pswq = df.iloc[:, first_pswq_column:first_spq_column]
 spq = df.iloc[:, first_spq_column:first_snaq_column]
-snaq = df.iloc[:, first_snaq_column:]
+snaq = df.iloc[:, first_snaq_column:first_meta_column]
 assert all("PSWQ" in column for column in pswq.columns)
 assert all("SPQ" in column for column in spq.columns)
 assert all("SNAQ" in column for column in snaq.columns)
