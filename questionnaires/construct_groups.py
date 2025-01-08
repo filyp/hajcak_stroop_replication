@@ -19,6 +19,21 @@ assert len(df["Email Address"].unique()) == len(df)
 to_delete = Path("to_delete.txt").read_text().strip()
 df = df[df["Email Address"] != to_delete]
 
+# %% delete additional people from maile_do_usuniecia.xlsx
+_old_len = len(df)
+
+emails_to_delete = pd.read_excel("maile_do_usuniecia.xlsx")
+# Assuming the emails are in the first column - adjust if needed
+emails_to_delete = emails_to_delete.iloc[:, 0].tolist()
+
+# assert that each email to delete is in the dataframe
+assert all(email in df["Email Address"].values for email in emails_to_delete)
+
+# delete the emails
+df = df[~df["Email Address"].isin(emails_to_delete)]
+
+assert len(df) == _old_len - len(emails_to_delete)
+
 # %% recreate the index
 df = df.reset_index(drop=True)
 df
