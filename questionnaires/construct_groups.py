@@ -42,7 +42,7 @@ df
 first_pswq_column = 4
 first_spq_column = first_pswq_column + 16
 first_snaq_column = first_spq_column + 31
-first_meta_column = first_snaq_column + 2
+first_meta_column = first_snaq_column + 30
 
 pswq = df.iloc[:, first_pswq_column:first_spq_column]
 spq = df.iloc[:, first_spq_column:first_snaq_column]
@@ -198,3 +198,55 @@ out_filename = "processed responses.xlsx"
 df.to_excel(out_filename, index=False)
 
 # %%
+############################################
+# trying to right my wrong:
+
+# correlation between SPQ and SNAQ
+# df["SPQ total score"]
+# df["SNAQ total score"]
+corr = np.corrcoef(df["SPQ total score"], df["SNAQ total score"])
+corr
+
+# %%
+# for colors use the wrong group
+wrong_df_filename = "processed responses we used wrong.xlsx"
+wrong_df = pd.read_excel(wrong_df_filename)
+wrong_group = wrong_df["Group"]
+# convert NaNs to None
+wrong_group = wrong_group.where(wrong_group.notna(), None)
+colors = wrong_group.apply(lambda x: color_map[x])
+ax = df.plot.scatter(x="PSWQ rank", y="SPQ+SNAQ rank", c=colors)
+ax.set_aspect("equal")
+
+# # %% how it's supposed to look
+# colors = df["Group"].apply(lambda x: color_map[x])
+# ax = df.plot.scatter(x="PSWQ rank", y="SPQ+SNAQ rank", c=colors)
+# ax.set_aspect("equal")
+
+# %%
+df["to_reject"] = False
+df["tmp_phobia_rank"] = df["SPQ+SNAQ rank"] - df["PSWQ rank"] / 3
+df["tmp_control_rank"] = df["PSWQ rank"] + df["SPQ+SNAQ rank"]
+# %%
+# find 7 people with the lowest phobia_rank
+wrong_phobia_group = df[colors == "red"]
+lowest_7_phobia = wrong_phobia_group.nsmallest(7, "tmp_phobia_rank")
+# for them, in df, set to_reject to True
+df.loc[lowest_7_phobia.index, "to_reject"] = True
+
+# %%
+# find 3 people with the highest control_rank
+wrong_control_group = df[colors == "green"]
+highest_3_control_ranks = wrong_control_group.nlargest(3, "tmp_control_rank")
+df.loc[highest_3_control_ranks.index, "to_reject"] = True
+
+# %%
+# as marker use "to_reject
+sizes = df["to_reject"].apply(lambda x: 40 if x else 5)
+ax = df.plot.scatter(x="PSWQ rank", y="SPQ+SNAQ rank", c=colors, s=sizes)
+ax.set_aspect("equal")
+# %% save
+out_filename = "processed responses with rejected.xlsx"
+df.to_excel(out_filename, index=False)
+# %%
+df[df["to_reject"]]["Email Address"]
