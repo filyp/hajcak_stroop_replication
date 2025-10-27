@@ -40,15 +40,14 @@ class TriggerHandler:
         self.trial = None
 
     def prepare_trigger(self, trigger_name):
+        self.trigger_no *= 2
+        if self.trigger_no == 256:
+            self.trigger_no = 1
         line = f"{self.trigger_no}:{trigger_name}"
         if self.trial is not None:
             self.trial.append(line)
         else:
             self.data_saver.triggers_list.append(line)
-
-        self.trigger_no *= 2
-        if self.trigger_no == 256:
-            self.trigger_no = 1
 
     def send_trigger(self):
         # if self.trial is not None:
