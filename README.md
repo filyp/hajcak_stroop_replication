@@ -10,7 +10,11 @@ git clone https://github.com/filyp/hajcak_stroop_replication.git
 
 # Running the experiment
 
-Click `run_red_left.bat` or `run_red_right.bat` to run the experiments.
+Click `run_red_left.bat` or `run_red_right.bat` to run the experiments. Or run from bash using one of:
+```bash
+python3 main.py config/stroop_red_left.yaml
+python3 main.py config/stroop_red_right.yaml
+```
 
 The first one, as the name suggests, will run the experiment where participants should respond to red text with the left mouse button and to green text with the right mouse button. The second one is the opposite.
 
